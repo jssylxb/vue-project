@@ -2,7 +2,8 @@ import Vue from 'vue'
 import App from './App.vue'
 import router from './router';
 import store from './store';
-import '@/utils/rem.js'
+// 移动端开发引用,用于缩放全屏
+// import '@/utils/rem.js'
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
 import 'bootstrap';
