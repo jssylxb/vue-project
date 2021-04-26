@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link rel="icon" href="<%= BASE_URL %>favicon.ico">
+    <title><%= htmlWebpackPlugin.options.title %></title>
+    <script>
+      (function (a, b, c, d, e, f) {a.npsmeter = a.npsmeter || function () {(a.npsmeter.q = a.npsmeter.q || []).push(arguments);}; a._npsSettings = { npsid: 'e4faee225bce5cf8', npssv: '1.0.1' };e = b.getElementsByTagName('head')[0]; f = b.createElement('script'); f.async = 1; f.src = c + d + a._npsSettings.npssv + '&npsid=' + a._npsSettings.npsid;e.appendChild(f);})(window, document, 'https://static.npsmeter.cn/npsmeter', '.js?sv=');
+      
+      npsmeter({key : 'e4faee225bce5cf8',user_id : '',user_name : ''})
+      </script>
+  </head>
+  <body>
+    <noscript>
+      <strong>We're sorry but <%= htmlWebpackPlugin.options.title %> doesn't work properly without JavaScript enabled. Please enable it to continue.</strong>
+    </noscript>
+    <div id="app"></div>
+    <!-- built files will be auto injected -->
+  </body>
+</html>
