@@ -25,15 +25,9 @@ import { mapMutations, mapGetters, mapActions } from 'vuex';
 import ChildrenTemp from '../components/ChildrenTemp';
 // echarts按需引入
 import * as echarts from 'echarts/core';
-import {
-    GridComponent
-} from 'echarts/components';
-import {
-    ScatterChart
-} from 'echarts/charts';
-import {
-    CanvasRenderer
-} from 'echarts/renderers';
+import { GridComponent } from 'echarts/components';
+import { ScatterChart } from 'echarts/charts';
+import { CanvasRenderer } from 'echarts/renderers';
 
 echarts.use(
     [GridComponent, ScatterChart, CanvasRenderer]
