@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Loading } from 'element-ui';
+import { ElLoading } from 'element-plus';
 
 const Axios = axios.create({
     baseURL: '/api',
@@ -31,7 +31,7 @@ Axios.interceptors.response.use(
 );
 
 export const get = (url, params = {}) => {
-    return new Promise ((resolve, reject) => {
+    return new Promise((resolve, reject) => {
         Axios.get(url, { params }).then((res) => {
             resolve(res);
         }, err => {
@@ -52,9 +52,9 @@ export const post = (url, data = {}) => {
 
 let loading;
 function startLoading() {
-    loading = Loading.service({
+    loading = ElLoading.service({
         lock: true,
-        text: "加载中...",
+        text: '加载中...',
         background: 'rgba(0,0,0,0.2)'
     })
 }

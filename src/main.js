@@ -1,20 +1,11 @@
-import Vue from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
+import ElementPlus from 'element-plus';
+import 'element-plus/lib/theme-chalk/index.css';
+// element组件默认英文,以下两行资源引入的作用是将组件默认的语言转为中文
+import 'dayjs/locale/zh-cn';
+import locale from 'element-plus/lib/locale/lang/zh-cn';
+import App from './App.vue';
 import router from './router';
 import store from './store';
-import '@/utils/rem.js'
-import ElementUI from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-import 'bootstrap';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap/dist/js/bootstrap.min.js';
 
-Vue.config.productionTip = false;
-
-Vue.use(ElementUI);
-
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+createApp(App).use(store).use(router).use(ElementPlus, { locale }).mount('#app');

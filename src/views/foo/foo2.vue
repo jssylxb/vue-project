@@ -5,11 +5,7 @@
 <script>
 export default {
   created() {
-        console.log(this.$route.meta)
-    }
-}
+    console.log(this.$route.meta);
+  }
+};
 </script>
-
-<style>
-
-</style>
