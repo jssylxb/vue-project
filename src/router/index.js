@@ -4,6 +4,7 @@ import Foo from '../views/foo.vue';
 import Foo1 from '../views/foo/foo1.vue';
 import Foo2 from '../views/foo/foo2.vue';
 import Bar from '../views/bar.vue';
+import Test from '../views/test.vue';
 
 const routes = [
   { path: '/', component: Index },
@@ -23,7 +24,8 @@ const routes = [
         }
     ]
   },
-  { path: '/bar', component: Bar }
+  { path: '/bar', component: Bar },
+  { path: '/test', component: Test }
 ]
 
 const router = createRouter({

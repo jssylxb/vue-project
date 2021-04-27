@@ -1,8 +1,8 @@
 <template>
   <div class="childrenTemp">
     <p>{{ msg }}</p>
-    <slot name="a" />
-    <slot name="b" />
+    <slot name="a"></slot>
+    <slot name="b"></slot>
   </div>
 </template>
 
@@ -15,7 +15,6 @@ export default {
 }
 </script>
 
-<!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 h3 {
   margin: 40px 0 0;

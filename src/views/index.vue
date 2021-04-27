@@ -1,28 +1,41 @@
 <template>
   <div>
     <div id="main"></div>
-    <children-temp msg="32323">
-      <slot name="a"></slot>
-      <slot name="b"></slot>
-    </children-temp>
-    <el-input placeholder="请输入内容"></el-input>
-    <router-link to="/foo">Go to Foo</router-link>
-    <br>
-    <router-link to="/bar">Go to Bar</router-link>
-    <br>
-    <span>{{count}}</span>
-    <div class="btn-container">
-      <button @click="addNum" class="btn">提交表单</button>
-    </div>
-    <div class="spinner-border" role="status">
-      <span class="sr-only">Loading...</span>
-    </div>
+    <el-collapse accordion :style="{margin: '10px'}" >
+      <el-collapse-item title="vuex demo" name="1">
+        <div class="dog-container">
+          <p>{{dogImgUrlGetters}}</p>
+          <img v-if="dogImg" class="dogImg" :src="dogImg" alt="dog">
+          <img v-else class="dogImg" src="../assets/imgLoading.png" alt="loading">
+          <br>
+          <el-button type="primary" @click="changeImg">change</el-button>
+        </div>
+      </el-collapse-item>
+      <el-collapse-item title="children demo" name="2">
+        <children-temp msg="32323">
+          <template v-slot:a>
+            <p>1</p>
+          </template>
+          <template v-slot:b>
+            <p>2</p>
+          </template>
+        </children-temp>
+      </el-collapse-item>
+      <el-collapse-item title="router demo" name="3">
+        <router-link to="/foo">Go to Foo</router-link>
+        <br>
+        <router-link to="/bar">Go to Bar</router-link>
+        <br>
+        <a href="javascript:void(0);" @click.prevent="goToTest">Go to test</a>
+      </el-collapse-item>
+    </el-collapse>
   </div>
 </template>
 
 <script>
-import { mapMutations, mapGetters, mapActions } from 'vuex';
+import { useRoute, useRouter } from 'vue-router';
 import ChildrenTemp from '../components/ChildrenTemp';
+import useDog from '../hooks/useDog';
 // echarts按需引入
 import * as echarts from 'echarts/core';
 import { GridComponent } from 'echarts/components';
@@ -37,15 +50,25 @@ export default {
   components: {
     ChildrenTemp
   },
-  data() {
-      return {
-          msg: 123
-      }
+  setup() {
+    // 封装自定义hooks
+    const { dogImg, changeImg, dogImgUrlGetters } = useDog();
+    // 路由demo
+    const route = useRoute();
+    const router = useRouter();
+    const goToTest = () => {
+      router.push('/test');
+    }
+    return {
+      dogImg,
+      changeImg,
+      dogImgUrlGetters,
+      goToTest,
+      route,
+      router
+    }
   },
-  async created() {
-    const data = await this.getListInfo();
-    console.log(data);
-
+  mounted() {
     var myChart = echarts.init(document.getElementById('main'));
     const option = {
       xAxis: {},
@@ -80,30 +103,29 @@ export default {
       }]
     };
     myChart.setOption(option);
-  },
-  computed: {
-    ...mapGetters(['count'])
-  },
-  methods: {
-    ...mapMutations(['add']),
-    ...mapActions(['getListInfo']),
-    addNum() {
-        this.add();
-    }
   }
 };
 </script>
 
 <style scoped lang="scss">
 #main {
-  width: 100%;
+  width: 100vw;
   height: 400px;
+}
+.dog-container {
+  display: flex;
+  flex-direction: column;
+  p {
+    word-wrap: break-word;
+  }
+  .dogImg {
+    display: flex;
+    width: 50px;
+    height: 50px;
+  }
 }
 .btn-container {
   display: flex;
-  justify-content: center;
-  width: 400px;
-  height: 600px;
   .btn {
     display: flex;
     color: $green;

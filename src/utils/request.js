@@ -26,6 +26,7 @@ Axios.interceptors.response.use(
         return res;
     },
     err => {
+        endLoading();
         return Promise.reject(err);
     }
 );
