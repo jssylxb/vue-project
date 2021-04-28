@@ -60,13 +60,13 @@ export default {
   setup() {
     // 封装自定义hooks
     const { dogImg, changeImg, dogImgUrlGetters } = useDog();
-    // 路由demo,此处为展示路由能力,正式开发需注意setup尽可能涉及成纯函数,逻辑代码抽象至hooks,如上行代码
+    // 路由 demo,此处为展示路由能力,正式开发需注意setup尽可能设计成纯函数,逻辑代码抽象至hooks,如上行代码
     const route = useRoute();
     const router = useRouter();
     const goToTest = () => {
       router.push('/test');
     }
-    // mock demo,此处为展示mock能力,正式开发需注意setup尽可能涉及成纯函数,逻辑代码抽象至hooks,如上行代码
+    // mock demo,此处为展示mock能力,正式开发需注意setup尽可能设计成纯函数,逻辑代码抽象至hooks,如上行代码
     const mockData = ref();
     onMounted(async () => {
       const { data } = await get('/mock/articles');
