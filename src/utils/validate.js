@@ -71,7 +71,6 @@ export function testChinaAndEng(s) {
 // 首尾不可包含空格
 export function testReasonSpace(s) {
     var reg=/^[\s]|[\s]$/gi;
-	/^\S.*\S$/
     return reg.test(s);
 }
 /**
