@@ -1,4 +1,4 @@
-### vue2.x项目初始工程
+### vue3.x-composition 项目初始工程
 
 * router、vuex 基本用法demo
 * axios基本封装
