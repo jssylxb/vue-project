@@ -3,7 +3,7 @@ module.exports = {
         open: true,
         proxy: {
             '/api': {
-                target: 'https://dog.ceo', //API服务器的地址
+                target: 'https://dog.ceo',
                 changeOrigin: true,
                 pathRewrite: {
                     '^/api': ''

@@ -7,5 +7,7 @@ import locale from 'element-plus/lib/locale/lang/zh-cn';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+// 开发环境引入mock
+process.env.NODE_ENV === 'development' && require('./mock/index');
 
 createApp(App).use(store).use(router).use(ElementPlus, { locale }).mount('#app');

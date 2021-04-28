@@ -5,7 +5,6 @@ import config from '../config';
 const Axios = axios.create({
     baseURL: config.baseURL,
     timeout: 20000,
-    withCredentials: false,
     headers: {
         'Content-Type': 'application/json;charset=UTF-8'
     }

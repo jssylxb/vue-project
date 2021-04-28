@@ -28,6 +28,11 @@
         <br>
         <a href="javascript:void(0);" @click.prevent="goToTest">Go to test</a>
       </el-collapse-item>
+      <el-collapse-item title="mock demo" name="4">
+        <pre>
+          {{mockData}}
+        </pre>
+      </el-collapse-item>
     </el-collapse>
   </div>
 </template>
@@ -41,6 +46,8 @@ import * as echarts from 'echarts/core';
 import { GridComponent } from 'echarts/components';
 import { ScatterChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
+import { get } from '@/utils/request';
+import { computed, onMounted, ref, reactive } from '@vue/runtime-core';
 
 echarts.use(
     [GridComponent, ScatterChart, CanvasRenderer]
@@ -53,19 +60,30 @@ export default {
   setup() {
     // 封装自定义hooks
     const { dogImg, changeImg, dogImgUrlGetters } = useDog();
-    // 路由demo
+    // 路由demo,此处为展示路由能力,正式开发需注意setup尽可能涉及成纯函数,逻辑代码抽象至hooks,如上行代码
     const route = useRoute();
     const router = useRouter();
     const goToTest = () => {
       router.push('/test');
     }
+    // mock demo,此处为展示mock能力,正式开发需注意setup尽可能涉及成纯函数,逻辑代码抽象至hooks,如上行代码
+    const mockData = ref();
+    onMounted(async () => {
+      const { data } = await get('/mock/articles');
+      mockData.value = data;
+      setInterval(async () => {
+        const { data } = await get('/mock/articles');
+        mockData.value = data;
+      }, 5000);
+    });
     return {
       dogImg,
       changeImg,
       dogImgUrlGetters,
       goToTest,
       route,
-      router
+      router,
+      mockData
     }
   },
   mounted() {
