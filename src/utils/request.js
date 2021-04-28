@@ -1,10 +1,11 @@
 import axios from 'axios';
 import { ElLoading } from 'element-plus';
+import config from '../config';
 
 const Axios = axios.create({
-    baseURL: '/api',
+    baseURL: config.baseURL,
     timeout: 20000,
-    withCredentials: true,
+    withCredentials: false,
     headers: {
         'Content-Type': 'application/json;charset=UTF-8'
     }
