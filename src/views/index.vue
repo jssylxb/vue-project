@@ -47,7 +47,8 @@ import { GridComponent } from 'echarts/components';
 import { ScatterChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 import { get } from '@/utils/request';
-import { computed, onMounted, ref, reactive } from '@vue/runtime-core';
+import { onMounted, ref } from '@vue/runtime-core';
+import '@/style/index.scss';
 
 echarts.use(
     [GridComponent, ScatterChart, CanvasRenderer]
@@ -126,28 +127,5 @@ export default {
 </script>
 
 <style scoped lang="scss">
-#main {
-  width: 100vw;
-  height: 400px;
-}
-.dog-container {
-  display: flex;
-  flex-direction: column;
-  p {
-    word-wrap: break-word;
-  }
-  .dogImg {
-    display: flex;
-    width: 50px;
-    height: 50px;
-  }
-}
-.btn-container {
-  display: flex;
-  .btn {
-    display: flex;
-    color: $green;
-    font-size: 16px;
-  }
-}
+
 </style>
