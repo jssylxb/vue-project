@@ -1,6 +1,6 @@
-import { computed } from 'vue';
+import { computed, ComputedRef } from 'vue';
 import { useStore } from 'vuex';
-export default () => {
+export default (): { dogImg: ComputedRef, dogImgUrlGetters: ComputedRef, changeImg: () => void } => {
     const store = useStore();
     const dogImg = computed(() => store.state.dog.dogImgUrl);
     const dogImgUrlGetters = computed(() => store.getters['dog/dogImgUrlGetters']);

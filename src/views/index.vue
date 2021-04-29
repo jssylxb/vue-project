@@ -47,14 +47,14 @@ import { GridComponent } from 'echarts/components';
 import { ScatterChart } from 'echarts/charts';
 import { CanvasRenderer } from 'echarts/renderers';
 import { get } from '@/utils/request';
-import { onMounted, ref } from '@vue/runtime-core';
+import { defineComponent, onMounted, ref } from '@vue/runtime-core';
 import '@/style/index.scss';
 
 echarts.use(
     [GridComponent, ScatterChart, CanvasRenderer]
 );
 
-export default {
+export default defineComponent({
   components: {
     ChildrenTemp
   },
@@ -123,7 +123,7 @@ export default {
     };
     myChart.setOption(option);
   }
-};
+});
 </script>
 
 <style scoped lang="scss">

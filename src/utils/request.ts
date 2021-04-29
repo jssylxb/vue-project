@@ -1,5 +1,6 @@
-import axios from 'axios';
+import axios, { AxiosPromise } from 'axios';
 import { ElLoading } from 'element-plus';
+import { ILoadingInstance } from 'element-plus/lib/el-loading/src/loading.type';
 import config from '../config';
 
 const Axios = axios.create({
@@ -31,7 +32,7 @@ Axios.interceptors.response.use(
     }
 );
 
-export const get = (url, params = {}) => {
+export const get = (url: string, params = {}): AxiosPromise => {
     return new Promise((resolve, reject) => {
         Axios.get(url, { params }).then((res) => {
             resolve(res);
@@ -41,7 +42,7 @@ export const get = (url, params = {}) => {
     })
 }
 
-export const post = (url, data = {}) => {
+export const post = (url: string, data = {}): AxiosPromise => {
     return new Promise((resolve, reject) => {
         Axios.post(url, data).then((response) => {
             resolve(response)
@@ -51,7 +52,7 @@ export const post = (url, data = {}) => {
     })
 }
 
-let loading;
+let loading: null | ILoadingInstance;
 function startLoading() {
     loading = ElLoading.service({
         lock: true,
@@ -61,5 +62,5 @@ function startLoading() {
 }
 
 function endLoading() {
-    loading.close()
+    (loading as ILoadingInstance).close()
 }

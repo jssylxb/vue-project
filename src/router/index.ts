@@ -7,21 +7,29 @@ import Bar from '../views/bar.vue';
 import Test from '../views/test.vue';
 
 const routes = [
-  { path: '/', component: Index },
+  {
+    path: '/',
+    name: 'Index',
+    component: Index
+  },
   {
     path: '/foo',
     component: Foo,
     children: [
-        {
-            path: 'foo1',
-            component: Foo1,
-            meta: '11111'
-        },
-        {
-            path: 'foo2',
-            component: Foo2,
-            meta: '22222'
+      {
+        path: 'foo1',
+        component: Foo1,
+        meta: {
+          title: 1
         }
+      },
+      {
+        path: 'foo2',
+        component: Foo2,
+        meta: {
+          title: 2
+        }
+      }
     ]
   },
   { path: '/bar', component: Bar },

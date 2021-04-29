@@ -1,20 +1,22 @@
 import { get } from '@/utils/request';
+import { ActionContext } from 'vuex';
+
+interface State {
+    dogImgUrl: string
+}
 
 const state = {
     dogImgUrl: '../assets/imgLoading.png'
 };
 
 const mutations = {
-    add(state) {
-        state.count++;
-    },
-    changeDogImg(state, newSrc) {
+    changeDogImg(state: State, newSrc: string): void {
         state.dogImgUrl = newSrc;
     }
 }
 
 const actions = {
-    getDogSrc({ commit, state }) {
+    getDogSrc({ commit, state }: ActionContext<State, any>): void {
         state.dogImgUrl = '';
         get('/api/breeds/image/random').then(res => {
             commit('changeDogImg', res.data.message)
@@ -23,7 +25,7 @@ const actions = {
 }
 
 const getters = {
-    dogImgUrlGetters: state => 'getters:' + state.dogImgUrl
+    dogImgUrlGetters: (state: State): string => 'getters:' + state.dogImgUrl
 }
 
 export default {

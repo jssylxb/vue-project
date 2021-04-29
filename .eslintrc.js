@@ -5,10 +5,11 @@ module.exports = {
   },
   extends: [
     'plugin:vue/vue3-essential',
-    '@vue/standard'
+    '@vue/standard',
+    '@vue/typescript/recommended'
   ],
   parserOptions: {
-    parser: 'babel-eslint'
+    ecmaVersion: 2020
   },
   rules: {
     'arrow-parens': 0,
@@ -26,6 +27,8 @@ module.exports = {
     'indent': ['off', 2],
     'no-trailing-spaces': 2,//一行结束后面不要有空格
     'arrow-spacing': 2,//=>的前/后空格
+    '@typescript-eslint/no-var-requires': 0,
+    "@typescript-eslint/no-explicit-any": ["off"],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off'
   }

@@ -7,6 +7,13 @@ import locale from 'element-plus/lib/locale/lang/zh-cn';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import date from '@/utils/date';
+import * as validate from '@/utils/validate';
+
+console.log(validate.isEmail('123'))
+
+date.format(new Date(), 'xx');
+
 // 开发环境引入mock
 process.env.NODE_ENV === 'development' && require('./mock/index');
 
