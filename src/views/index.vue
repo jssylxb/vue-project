@@ -4,6 +4,7 @@
     <el-collapse accordion :style="{margin: '10px'}" >
       <el-collapse-item title="vuex demo" name="1">
         <div class="dog-container">
+          <i class="iconfont iconfuke"></i>
           <p>{{dogImgUrlGetters}}</p>
           <img v-if="dogImg" class="dogImg" :src="dogImg" alt="dog">
           <img v-else class="dogImg" src="../assets/imgLoading.png" alt="loading">
@@ -127,6 +128,9 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.iconfuke {
+  font-size: 32px;
+}
 .dogImg {
   @include grayscale;
 }
