@@ -127,5 +127,7 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
+.dogImg {
+  @include grayscale;
+}
 </style>

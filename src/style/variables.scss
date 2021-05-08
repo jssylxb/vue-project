@@ -1,2 +1,127 @@
+// 主题色
+$primary: #1baeae; 
 $red: red;
 $green: green;
+
+@mixin ellipsis {
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+@mixin ellipsis-multi($number) {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $number;
+    overflow: hidden;
+}
+
+// 水平竖直方向居中-translate
+@mixin center {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+}
+
+// 水平竖直方向居中-flex
+@mixin flex-center($w, $h) {
+    @include flex;
+    align-items: center;
+    justify-content: center;
+}
+
+//水平竖直方向居中-margin
+@mixin know-center($w, $h) {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -($w/2);
+    margin-top: -($h/2);
+}
+
+// 吸顶导航
+@mixin fix-header($h: 70px) {
+    @include fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: $h;
+    z-index: 1000;
+}
+
+// 吸底导航
+@mixin fix-footer($h: 70px) {
+    @include fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: $h;
+    z-index: 1000;
+}
+
+// 弹性盒
+@mixin flex {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+}
+
+// 全屏大图背景
+@mixin fullscreen-bg($url) {
+    width: 100vw;
+    height: 100vh;
+    background: url($url) no-repeat 50% 50%;
+    background-size: cover;
+}
+
+// 禁止文本被选择
+@mixin user-select {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+// 美化文本选中 ::selection
+@mixin beauty-select($color, $bgcolor) {
+    &::selection {
+        color: $color;
+        background-color: $bgcolor;
+    }
+}
+
+// 滤镜: 将彩色照片显示为黑白照片、保留图片层次
+@mixin grayscale {
+    -webkit-filter: grayscale(100%);
+    -moz-filter: grayscale(100%);
+    -ms-filter: grayscale(100%);
+    -o-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+// 模糊  毛玻璃效果
+@mixin blur($blur: 10px) {
+    -webkit-filter: blur($blur);
+    -moz-filter: blur($blur);
+    -o-filter: blur($blur);
+    -ms-filter: blur($blur);
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius='${blur}');
+    filter: blur($blur);
+    *zoom: 1;
+}
+
+// 三角形
+@mixin triangle($width: 4px, $color: #000) {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    vertical-align: middle;
+    border-top: $width solid $color;
+    border-left: $width solid transparent;
+    border-right: $width solid transparent;
+}
