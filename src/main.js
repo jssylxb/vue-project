@@ -7,6 +7,7 @@ import locale from 'element-plus/lib/locale/lang/zh-cn';
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import 'normalize.css';
 // 开发环境引入mock
 process.env.NODE_ENV === 'development' && require('./mock/index');
 
