@@ -1,9 +1,8 @@
-### vue3.x-composition 项目初始工程
+### vue3.x-composition-app-webview 项目初始工程
 
-* router、vuex 基本用法demo
 * axios基本封装
-* 支持引用element plus, echarts等
-* postcss autoprefixer
+* 按需引入vant
+* postcss autoprefixer, pxtorem
 * eslint
 * scss 全局变量
 * 常用校验

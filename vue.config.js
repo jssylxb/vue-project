@@ -1,4 +1,13 @@
 module.exports = {
+    productionSourceMap: false,
+    pages: {
+        car_bind: {
+            entry: './src/pages/get_dog/main.js',
+            template: './public/index.html',
+            filename: 'get_dog.html',
+            title: '获得小狗',
+        }
+    },
     devServer: {
         open: true,
         proxy: {

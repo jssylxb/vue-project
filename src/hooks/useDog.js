@@ -1,16 +1,17 @@
-import { computed } from 'vue';
-import { useStore } from 'vuex';
+import { onMounted, ref } from 'vue';
+import { getDog } from '@/api/get_dog';
+
 export default () => {
-    const store = useStore();
-    const dogImg = computed(() => store.state.dog.dogImgUrl);
-    const dogImgUrlGetters = computed(() => store.getters['dog/dogImgUrlGetters']);
-    const changeImg = () => {
-        store.dispatch('dog/getDogSrc');
-    }
-    changeImg();
-    return {
-        dogImg,
-        changeImg,
-        dogImgUrlGetters
-    };
-}
+  const imgSrc = ref('');
+  const getImg = async () => {
+    const data = await getDog();
+    imgSrc.value = data.message;
+  };
+  onMounted(() => {
+    getImg();
+  });
+  return {
+    imgSrc,
+    getImg
+  };
+};
